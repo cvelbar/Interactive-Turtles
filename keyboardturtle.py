@@ -3,9 +3,7 @@ from turtle import Turtle
 class KeyboardTurtle(Turtle):
   # our 'wrapper' class of the Turtle class
   def __init__(self, 
-               window,  
-               straight = "Up",
-               back = "Down",
+               window,
                turn_right = "Right",
                turn_left = "Left",
                other_player = None):
@@ -14,37 +12,31 @@ class KeyboardTurtle(Turtle):
     
     # Sets up incoming variables
     self.window = window
-    self.straight = straight
     self.turn_right = turn_right
-    self.back = back
     self.turn_left = turn_left
     self.other_player = other_player
 
     #set turtle starting states
-    self.shape("turtle")
+    self.shape("square")
+    self.shapesize(1, 4)
     self.color("green")
     self.penup()
 
     # Sets up keyboard command examples
     self.window.onkey(self.go_right, self.turn_right)
-    self.window.onkey(self.go_forward, self.straight)
-    self.window.onkey(self.go_back, self.back)
     self.window.onkey(self.go_left, self.turn_left)
 
     #sets up controlling variables (y not implemented)
-    self.movement_speed = 5
+    self.movement_speed = 10
     self.turn_speed = 45
     self.collision_distance = 20
 
   # Movement Methods
-  def go_forward(self):
-    self.forward(self.movement_speed)
-    if self.check_collision(self.other_player):
-      print("crash")
-      quit()
-      
   def go_right(self):
-    self.right(self.turn_speed)
+    self.forward(self.movement_speed)
+
+  def go_left(self):
+    self.backward(self.movement_speed)
 
 
   # Useful Methods

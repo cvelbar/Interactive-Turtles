@@ -15,14 +15,14 @@ class MovingTurtle(Turtle):
     #variables
     self.x_spd = 4
 
-def move_self(self):
-  self.forward(self.x_spd)
-  if self.at_edge():
-    self.x_spd = -self.x_spd
-  ontimer(self.move_self, 1)
+  def move_self(self):
+    self.forward(self.x_spd)
+    if self.at_edge():
+      self.x_spd = -self.x_spd
+    ontimer(self.move_self, 1)
 
-def at_edge(self):
-  if self.xcor() >= self.width/2 or self.xcor() <= -self.width/2:
-    return True
-  else:
-    return False
+  def at_edge(self):
+    if self.xcor() >= self.width/2 or self.xcor() <= -self.width/2:
+      return True
+    else:
+      return False
