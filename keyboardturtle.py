@@ -27,7 +27,7 @@ class KeyboardTurtle(Turtle):
     self.window.onkey(self.go_left, self.turn_left)
 
     #sets up controlling variables (y not implemented)
-    self.movement_speed = 10
+    self.movement_speed = 25
     self.turn_speed = 45
     self.collision_distance = 20
 
