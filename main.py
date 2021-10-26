@@ -1,6 +1,6 @@
 from turtle import Screen, ontimer
 from keyboardturtle import KeyboardTurtle
-from clickableturtle import ClickableTurtle
+#from clickableturtle import ClickableTurtle
 from movingturtle import MovingTurtle
 
 def move_things():

@@ -14,11 +14,11 @@ class MovingTurtle(Turtle):
     self.shape("circle")
     self.shapesize(.5,  .5, 1)
     self.penup()
-    
+    self.collision_distance = 32
 
     #variables
-    self.x_spd = 4
-    self.y_spd = 4
+    self.x_spd = 2.2
+    self.y_spd = 2.2
 
   def move_self(self):
     self.goto(self.xcor() +  self.x_spd, self.ycor() +  self.y_spd)
@@ -28,6 +28,11 @@ class MovingTurtle(Turtle):
 
     if self.at_edge_y():
       self.y_spd = -self.y_spd
+      if self.ycor() <0:
+        quit()
+    if self.check_collision(self.player):
+      self.y_spd= - self.y_spd
+  
 
   def at_edge_x(self):
     if self.xcor() >= self.width/2 or self.xcor() <= -self.width/2:
@@ -41,8 +46,14 @@ class MovingTurtle(Turtle):
     else:
       return False
 
-  def at_edge_y(self):
-    if self.player.ycor() >= self.height/2 or self.player.ycor() <= -self.height/2:
+  def check_collision(self, obj_to_check):
+    distance_x = obj_to_check.xcor() - self.xcor()
+    distance_x = abs(distance_x)
+
+    distance_y = obj_to_check.ycor() - self.ycor()
+    distance_y = abs(distance_y)
+
+    if distance_x < self.collision_distance and distance_y < self.collision_distance:
       return True
     else:
       return False
